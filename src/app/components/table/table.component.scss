@@ -1,0 +1,261 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.grid-container {
+  display: grid;
+  overflow: hidden;
+  grid-template-rows: 61px 76%;
+  gap: 5px;
+  margin-left: 15px;
+}
+
+table, .paginator, ::ng-deep .mat-mdc-paginator-container {
+  background-color: white;
+}
+
+.show {
+  display: block;
+}
+
+.not-show {
+  display: none;
+}
+
+.show-details {
+  color: #0c519c;
+}
+
+/************** Filtro busqueda **************/
+.search {
+  grid-row: 1 / 2;
+}
+
+.filter  {
+  background-color: rgb(23, 1, 1) !important;
+}
+
+.ng-autocomplete {
+  width: 400px;
+  height: 85%;
+}
+
+.ng-autocomplete {
+  ::ng-deep .autocomplete-container {
+    box-shadow: none;
+    border-bottom: 1.6px solid #0c519c !important;
+  }
+
+  ::ng-deep .input-container, ::ng-deep .autocomplete-container {
+    height: 100% !important;
+  }
+
+  ::ng-deep .input-container{
+    display: flex;
+    align-items: center;
+  }
+
+  ::ng-deep a {
+    color: #0c519c !important;
+  }
+
+  ::ng-deep input::placeholder {
+    color: #7bbbff;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  ::ng-deep ul::-webkit-scrollbar {
+    width: 1em;
+  }
+
+  ::ng-deep ul::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgb(12, 82, 156);
+    border-radius: 4px;
+  }
+
+  ::ng-deep ul::-webkit-scrollbar-thumb {
+    background-color: #7bbbff;
+    border-radius: 4px;
+  }
+}
+
+/************** Tabla **************/
+.table-list {
+  grid-row: 2 / 3;
+  max-height: 420px;
+}
+
+table {
+  width: 100%;
+}
+
+::ng-deep .mat-mdc-paginator-range-actions, th {
+  color: #0c519c !important;
+}
+
+td {
+  border-bottom: 1.5px solid #0c519c !important;
+}
+
+td, th {
+  font-size: 1rem;
+}
+
+th {
+  font-weight: 600;
+  background-color: #7bbbff !important;
+  border-bottom: 1.6px solid #0c519c !important;
+  border-top: 1.6px solid #0c519c !important;
+}
+
+::ng-deep .mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-image.mat-column-image.ng-star-inserted {
+  border-left: 1.6px solid #0c519c !important;
+}
+
+::ng-deep .mat-mdc-header-cell.mdc-data-table__header-cell.cdk-header-cell.cdk-column-details.mat-column-details.ng-star-inserted {
+  border-right: 1.6px solid #0c519c !important;
+}
+
+td {
+  font-weight: 500;
+  color: #7bbbff !important;
+  //color: #0c519c !important;
+}
+
+mat-form-field {
+  font-size: 0.8rem;
+}
+
+::ng-deep .mat-column-image img {
+  width: 45px !important;
+}
+
+::ng-deep .mat-column-image, ::ng-deep .mat-column-details {
+  width: 15%;
+}
+
+::ng-deep .mat-column-name {
+  width: 70%;
+}
+
+tr.mat-row {
+  height: 53px;
+}
+
+::ng-deep .mat-column-details mat-icon {
+  font-size: 2.5rem;
+  height: 40px;
+  width: 40px;
+}
+
+::ng-deep .mat-column-details mat-icon:hover {
+  cursor: pointer;
+  color: #0c519c;
+}
+
+/************** Paginator **************/
+.paginator {
+  position: absolute !important;
+  width: 69vw;
+}
+
+::ng-deep .mat-mdc-paginator-container {
+  justify-content: space-between !important;
+  padding: 0 !important;
+}
+
+::ng-deep .mat-mdc-paginator-range-actions {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+::ng-deep .mat-mdc-paginator-range-actions ::ng-deep .mat-mdc-paginator-icon {
+  fill: #7bbbff !important;
+}
+
+/*-------------------  Media queries -------------------*/
+@media only screen and (min-width: 1670px) {
+  .paginator {
+    bottom: 19%;
+  }
+}
+
+@media only screen and (min-width: 1900px) {
+  .paginator {
+    bottom: 26%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .grid-container {
+    margin-left: 0;
+  }
+
+  ::ng-deep .mat-column-image {
+    width: 10%;
+  }
+
+  ::ng-deep .mat-column-details {
+    width: 15%;
+  }
+
+  ::ng-deep .mat-column-name {
+    width: 40%;
+  }
+
+  td, th {
+    font-size: 1.2rem;
+  }
+
+  .paginator {
+    width: 90%;
+    bottom: 32%;
+  }
+
+  ::ng-deep .mat-mdc-paginator-container {
+    flex-wrap: nowrap !important;
+  }
+
+  ::ng-deep .mat-mdc-paginator-range-actions {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .paginator {
+    bottom: 28%;
+  }
+
+  ::ng-deep .mat-column-name {
+    width: 30%;
+  }
+
+  ::ng-deep .mat-column-details {
+    width: 20%;
+  }
+}
+
+@media only screen and (max-width: 361px) {
+  ::ng-deep .mat-column-details {
+    width: 25%;
+  }
+
+  .table-list {
+    height: 323px;
+  }
+
+  .paginator {
+    bottom: 26%;
+    width: 98%;
+    left: 0;
+  }
+
+  ::ng-deep .mat-mdc-paginator-outer-container {
+    position: static;
+    width: 348px;
+  }
+}
+

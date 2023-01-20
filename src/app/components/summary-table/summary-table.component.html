@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <ng-container *ngFor="let char of this.chars">
+        <th>{{char}}</th>
+      </ng-container>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <ng-container *ngFor="let pokemonCount of this.pokemonCountList">
+        <td>{{pokemonCount}}</td>
+      </ng-container>
+    </tr>
+  </tbody>
+</table>

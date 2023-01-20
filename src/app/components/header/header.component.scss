@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: #0f224a;
+  height: 12vh;
+  max-height: 90px;
+  display: flex;
+  justify-content: center;
+}
+
+.header img {
+  width: 160px;
+  object-fit: cover;
+}

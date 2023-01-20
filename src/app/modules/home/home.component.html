@@ -1,0 +1,57 @@
+<div class="home-container">
+  <div class="home-container__pokemons-list">
+    <app-table (pokemonEmitted)="addPokemon($event)"></app-table>
+  </div>
+  <div class="home-container__pokemon-details">
+    <div class="home-container__img-pokeball" *ngIf="!this.showDetails">
+      <img [ngClass]="rotatePokeball ? 'rotate-pokeball' : 'not-rotate'" src="../../../assets/pokeball.png" alt="">
+    </div>
+
+    <div class="home-container__details" *ngIf="this.showDetails">
+      <div class="home-container__details-header">
+        <img [src]="pokemonDetails?.sprites?.other?.dream_world?.front_default" alt="">
+      </div>
+      <div class="home-container__details-content">
+        <div class="name">
+          <h1>
+            {{pokemonDetails.name}}
+          </h1>
+        </div>
+        <div class="home-container__details-content--experience">
+          <div class="title">
+            <h2>Base Experience</h2>
+          </div>
+          <div class="types">
+            <ul>
+              <li>{{pokemonDetails.base_experience}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="home-container__details-content--abilities">
+          <div class="title">
+            <h2>Abilities</h2>
+          </div>
+          <div class="abilities">
+            <ul *ngFor="let ability of pokemonDetails.abilities; let i = index">
+              <li *ngIf="i == 0">{{ability.ability.name}}</li>
+              <li *ngIf="i != 0">&nbsp;-&nbsp;{{ability.ability.name}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="home-container__details-content--types">
+          <div class="title">
+            <h2>Types</h2>
+          </div>
+          <div class="types">
+            <ul *ngFor="let type of pokemonDetails.types; let i = index">
+              <li *ngIf="i == 0">{{type.type.name}}</li>
+              <li *ngIf="i != 0">&nbsp;-&nbsp;{{type.type.name}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <app-summary-table class="home-container__summary"></app-summary-table>
+</div>

@@ -1,0 +1,65 @@
+<div class="grid-container">
+  <div class="search">
+    <div class="ng-autocomplete">
+      <ng-autocomplete
+        class="filter"
+        [data]="this.pokemons"
+        [searchKeyword]="keyword"
+        placeholder="Search"
+        (selected)='selectEvent($event)'
+        (keyup)='applyFilter($event, "")'
+        [itemTemplate]="itemTemplate"
+        (inputCleared)="closeFilter()"
+        [notFoundTemplate]="notFoundTemplate">
+      </ng-autocomplete>
+
+      <ng-template #itemTemplate let-item>
+        <a [innerHTML]="item.name"></a>
+      </ng-template>
+
+      <ng-template #notFoundTemplate let-notFound>
+        <div [innerHTML]="notFound"></div>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="table-list">
+    <table mat-table [dataSource]="dataSource">
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell style="max-height: 53px;" *matCellDef="let pokemon">
+          {{pokemon.id}}
+        </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell style="max-height: 53px;" *matCellDef="let pokemon"> {{pokemon.name}} </td>
+      </ng-container>
+
+      <!-- details Column -->
+      <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+        <td mat-cell style="max-height: 53px;" *matCellDef="let pokemon; let i = index">
+          <mat-icon [ngClass]="pokemon.showDetails ? 'not-show' : 'show'" (click)="seeDetails(i, pokemon)">info</mat-icon>
+          <mat-icon [ngClass]="pokemon.showDetails ? 'show show-details' : 'not-show'" (click)="seePokeball(pokemon)">cancel</mat-icon>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let pokemon; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter</td>
+      </tr>
+    </table>
+
+    <mat-paginator class="paginator" [pageSizeOptions]="[6]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>
+
+<app-loader [loading]="loading"></app-loader>
